@@ -15,7 +15,7 @@ export default function ColorPick ({ setColor }) {
 	
   return (
 	<>
-		<select ref={colorRef} onInput={handleColor} id="color-dropdown" style={{height:"50%", marginTop:"10%", marginLeft:"10px"}}>
+		<select ref={colorRef} onInput={handleColor} id="color-dropdown">
 			<option className="color-option" style={{color:"black", backgroundColor:"white"}} value="null">All</option>
 			<option className="color-option" style={{color:"white", backgroundColor:"red"}} value="red">Red</option>
 			<option className="color-option" style={{color:"white", backgroundColor:"orange"}} value="orange">Orange</option>
