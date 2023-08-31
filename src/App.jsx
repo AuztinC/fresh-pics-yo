@@ -11,23 +11,43 @@ import Header from './Header.jsx'
 
 function App() {
 	
+	const [hashes, setHashes] = useState({q:null, p:1, c:null})
 	
-	const [category, setCategory] = useState('boat');
+	const [category, setCategory] = useState(null);
 	const [color, setColor] = useState();
 	
 	const [overlay, setOverlay] = useState(null)
 	const [overlayStyle, setOverlayStyle] = useState({display:"none", pointerEvents: "none", transform: "scale(0%)"})
 	
 	// current page number
-	const [page, setPage] = useState(1);
+	const [page, setPage] = useState();
 	// number of pages, used to determine max value for page number input
 	const [pages, setPages] = useState();
 	
-
+	
+	window.addEventListener("hashchange", loadHashes)
+	window.addEventListener("load", loadHashes)
+	
+	function loadHashes() {
+		
+		let tempHashes = decodeURI(window.location.hash.replace("#", "")).split(" ")
+		
+		tempHashes.forEach((h, i) => {
+			tempHashes[i] = h.slice(2, h.length)
+		});
+		
+		console.log(tempHashes)
+		
+		setCategory(tempHashes[0])
+		setColor(tempHashes[1])
+		setPage(parseInt(tempHashes[2]))
+	}
+	
 	function sub(e) {
 		if (e.key === "Enter") {
 			setCategory(e.target.value)
 			setPage(1)
+			// window.location.hash = e.target.value
 			
 		}
 	}
@@ -47,10 +67,15 @@ function App() {
 	// }
 	
 	
-	// useEffect(() => {
+	useEffect(() => {
 		
+		if (category !== null) {
+			setHashes({q:category, p:page, c:color})
+			
+			window.location.hash = encodeURI(`q=${category} c=${color} p=${page}`)
+		}
 		
-	// }, [page])
+	}, [category, page, color])
 	
 	useEffect(() => {
 		if (overlay) {

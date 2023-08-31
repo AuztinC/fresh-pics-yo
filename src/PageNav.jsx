@@ -24,6 +24,8 @@ export default function PageNav({ page, pages, setPage, category }) {
 				}
 		}
 		
+		
+		// go to first page of new category
 		useEffect(() => {
 			numRef.current.value = 1;
 		}, [category])
