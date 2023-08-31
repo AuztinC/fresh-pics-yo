@@ -43,14 +43,14 @@ function App() {
 		setPage(parseInt(tempHashes[2]))
 	}
 	
-	function sub(e) {
-		if (e.keyCode === 13 || e.key == "enter" || e.key == "next") {
-			setCategory(e.target.value)
-			setPage(1)
-			// window.location.hash = e.target.value
+	// function sub(e) {
+	// 	if (e.keyCode === 13 || e.key == "enter" || e.key == "next") {
+	// 		setCategory(e.target.value)
+	// 		setPage(1)
+	// 		// window.location.hash = e.target.value
 			
-		}
-	}
+	// 	}
+	// }
 	
 	function handleOverlay() {
 		setOverlayStyle({display:"flex", pointerEvents: "all", transform: "scale(100%)"})
@@ -89,7 +89,7 @@ function App() {
 		
 		
 		<div className="App">
-			<Header category={category} pages={pages} page={page} sub={sub} setPage={setPage} setColor={setColor}/>
+			<Header category={category} setCategory={setCategory} pages={pages} page={page} setPage={setPage} setColor={setColor}/>
 			
 			<div id="image-container">
 				<RanImg cat={category} handleOverlay={setOverlay} color={color} p={page} setPs={setPages}/>
