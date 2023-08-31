@@ -44,7 +44,7 @@ function App() {
 	}
 	
 	function sub(e) {
-		if (e.keyCode === 13) {
+		if (e.keyCode === 13 || e.key == "enter" || e.key == "next") {
 			setCategory(e.target.value)
 			setPage(1)
 			// window.location.hash = e.target.value
